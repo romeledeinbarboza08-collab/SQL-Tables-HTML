@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablas SQL</title>
+</head>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+        header {
+            background: #269ed1;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #212529;
+            background-color: #F8F9FA;
+        }
+
+         nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .container {
+        max-width: 1100px;
+        margin: 2rem auto;
+        padding: 0 1.5rem;
+    }
+
+    /* Botones */
+    .btn-group {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 1.5rem;
+    }
+
+    .btn {
+        padding: 10px 24px;
+        font-size: 14px;
+        font-family: inherit;
+        border: 2px solid #269ed1;
+        border-radius: 6px;
+        background: white;
+        color: #269ed1;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.2s;
+    }
+
+    .btn:hover {
+        background: #e8f6fc;
+    }
+
+    .btn.activo {
+        background: #269ed1;
+        color: white;
+    }
+
+    /* Contenedor tabla */
+    .tabla-section {
+        display: none;
+    }
+
+    .tabla-section.visible {
+        display: block;
+    }
+
+    .tabla-section h2 {
+        font-size: 1.1rem;
+        color: #269ed1;
+        margin-bottom: 0.8rem;
+        border-left: 4px solid #269ed1;
+        padding-left: 10px;
+    }
+
+    .tabla-wrap {
+        overflow-x: auto;
+        border-radius: 8px;
+        box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        font-size: 14px;
+    }
+
+    
+
+    thead th {
+        padding: 11px 14px;
+        text-align: left;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+    tbody tr:nth-child(even) {
+        background: #f0f8fd;
+    }
+
+    tbody tr:hover {
+        background: #d6eef8;
+    }
+
+    td {
+        padding: 9px 14px;
+        border-bottom: 1px solid #e0e0e0;
+        white-space: nowrap;
+    }
+
+    tbody tr:last-child td {
+        border-bottom: none;
+    }
+</style>
+
+<body>
+    <center> <h1> <header> Tablas SQL </header> </h1> 
+    </center>
+
+ <div class="container">
+
+        <!-- Botones -->
+        <div class="btn-group">
+            <button class="btn activo" onclick="mostrarTabla('clientes', this)">Clientes</button>
+            <button class="btn" onclick="mostrarTabla('productos', this)">Productos</button>
+        </div>
+
+        <!-- Tabla CLIENTES -->
+        <div id="clientes" class="tabla-section visible">
+            <h2>CLIENTES</h2>
+            <div class="tabla-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>CÓDIGO CLIENTE</th>
+                            <th>EMPRESA</th>
+                            <th>DIRECCIÓN</th>
+                            <th>POBLACIÓN</th>
+                            <th>TELÉFONO</th>
+                            <th>RESPONSABLE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>CT01</td><td>BELTRÁN E HIJOS</td><td>LAS FUENTES 78</td><td>MADRID</td><td>914456435</td><td>ANGEL MARTÍNEZ</td></tr>
+                        <tr><td>CT02</td><td>LA MODERNA</td><td>LA PALOMA 123</td><td>OVIEDO</td><td>985323434</td><td>JUAN GARCÍA</td></tr>
+                        <tr><td>CT03</td><td>EL ESPAÑOLITO</td><td>MOTORES 34</td><td>BARCELONA</td><td>934565343</td><td>ANA FERNÁNDEZ</td></tr>
+                        <tr><td>CT04</td><td>EXPORTASA</td><td>VALLECAS 34</td><td>MADRID</td><td>913452378</td><td>ELVIRA GÓMEZ</td></tr>
+                        <tr><td>CT06</td><td>CONFECCIONES AMPARO</td><td>LOS MOROS 23</td><td>GIJÓN</td><td>985754332</td><td>LUÍS ÁLVAREZ</td></tr>
+                        <tr><td>CT07</td><td>LA CASA DEL JUGUETE</td><td>AMÉRICA 45</td><td>MADRID</td><td>912649987</td><td>ELÍAS PÉREZ</td></tr>
+                        <tr><td>CT08</td><td>JUGUETERÍA SUÁREZ</td><td>PARIS 123</td><td>BARCELONA</td><td>933457866</td><td>JUAN GARCÍA</td></tr>
+                        <tr><td>CT09</td><td>ALMACÉN POPULAR</td><td>LAS FUENTES 124</td><td>BILBAO</td><td>942347127</td><td>JOSÉ ÁLVAREZ</td></tr>
+                        <tr><td>CT10</td><td>FERETERÍA EL CLAVO</td><td>PASEO DE ÁLAMOS 78</td><td>MADRID</td><td>914354866</td><td>MANUEL MENÉNDEZ</td></tr>
+                        <tr><td>CT11</td><td>JUGUETES MARTÍNEZ</td><td>VIA LAYETANA 245</td><td>BARCELONA</td><td>936628554</td><td>FRANCISCO CUEVAS</td></tr>
+                        <tr><td>CT12</td><td>FERNÁNDEZ SL</td><td>PASEO DEL MAR 45</td><td>SANTANDER</td><td>942049586</td><td>ELISA COLLADO</td></tr>
+                        <tr><td>CT13</td><td>CONFECCIONES ARTÍMEZ</td><td>GENERAL PERÓN 45</td><td>A CORUÑA</td><td>981345239</td><td>ESTEBAN PASCUAL</td></tr>
+                        <tr><td>CT14</td><td>DEPORTES GARCÍA</td><td>GUZMÁN EL BUENO 45</td><td>MADRID</td><td>913299475</td><td>ANA JIMÉNEZ</td></tr>
+                        <tr><td>CT15</td><td>EXCLUSIVAS FERNÁNDEZ</td><td>LLOBREGAT 250</td><td>BARCELONA</td><td>939558365</td><td>LUISA FERNÁNDEZ</td></tr>
+                        <tr><td>CT16</td><td>DEPORTES MORÁN</td><td>AUTONOMÍA 45</td><td>LUGO</td><td>982986944</td><td>JOSÉ MANZANO</td></tr>
+                        <tr><td>CT17</td><td>BAZAR FRANCISCO</td><td>CARMEN 45</td><td>ZAMORA</td><td>980495288</td><td>CARLOS BELTRÁN</td></tr>
+                        <tr><td>CT18</td><td>JUGUETES LA SONRISA</td><td>LA BAÑEZA 67</td><td>LEÓN</td><td>987945368</td><td>FAUSTINO PÉREZ</td></tr>
+                        <tr><td>CT19</td><td>CONFECCIONES GALÁN</td><td>FUENCARRAL 78</td><td>MADRID</td><td>913859234</td><td>JUAN GARCÍA</td></tr>
+                        <tr><td>CT20</td><td>LA CURTIDORA</td><td>OLIVARES 3</td><td>MÁLAGA</td><td>953756259</td><td>MARÍA GÓMEZ</td></tr>
+                        <tr><td>CT21</td><td>LÍNEA JOVEN</td><td>SIERPES 78</td><td>SEVILLA</td><td>953452567</td><td>ASUNCIÓN SALADO</td></tr>
+                        <tr><td>CT22</td><td>BAZAR EL BARAT</td><td>DIAGONAL 56</td><td>BARCELONA</td><td>936692866</td><td>ELISA DAPENA</td></tr>
+                        <tr><td>CT23</td><td>EL PALACIO DE LA MODA</td><td>ORTEGA Y GASSET 129</td><td>MADRID</td><td>927785235</td><td>LAURA CARRASCO</td></tr>
+                        <tr><td>CT24</td><td>SÁEZ Y CÍA</td><td>INFANTA MERCEDS 23</td><td>SEVILLA</td><td>954869234</td><td>MANUEL GUERRA</td></tr>
+                        <tr><td>CT25</td><td>DEPORTES EL MADRILEÑO</td><td>CASTILLA 345</td><td>ZARAGOZA</td><td>976388934</td><td>CARLOS GONZÁLEZ</td></tr>
+                        <tr><td>CT26</td><td>FERRETERÍA LA ESCOBA</td><td>ORENSE 7</td><td>MADRID</td><td>918459346</td><td>JOSÉ GARCÍA</td></tr>
+                        <tr><td>CT27</td><td>JUGUETES EL BARATO</td><td>VÍA AUGUSTA 245</td><td>BARCELONA</td><td>933486984</td><td>ELVIRA IGLESIAS</td></tr>
+                        <tr><td>CT28</td><td>CONFECCIONES HERMINIA</td><td>CORRIDA 345</td><td>GIJÓN</td><td>985597315</td><td>ABEL GONZÁLEZ</td></tr>
+                        <tr><td>CT30</td><td>BAZAR EL ARGENTINO</td><td>ATOCHA 55</td><td>MADRID</td><td>912495973</td><td>ADRIÁN ÁLVAREZ</td></tr>
+                        <tr><td>CT31</td><td>LA TIENDA ELEGANTE</td><td>EL COMENDADOR 67</td><td>ZARAGOZA</td><td>975694035</td><td>JOSÉ PASCUAL</td></tr>
+                        <tr><td>CT32</td><td>DEPORTES NAUTICOS GARCÍA</td><td>JUAN FERNÁNDEZ 89</td><td>ÁVILA</td><td>920268648</td><td>JUAN CONRADO</td></tr>
+                        <tr><td>CT33</td><td>CONFECCIONES RUIZ</td><td>LLOBREGAT 345</td><td>BARCELONA</td><td>934587615</td><td>CARLOS SANZ</td></tr>
+                        <tr><td>CT34</td><td>BAZAR LA FARAONA</td><td>CASTILLA Y LEÓN 34</td><td>MADRID</td><td>915483627</td><td>ANGEL SANTAMARÍA</td></tr>
+                        <tr><td>CT35</td><td>FERRETERÍA EL MARTILLO</td><td>CASTELLANOS 205</td><td>SALAMANCA</td><td>923548965</td><td>JOAQUÍN FERNANDEZ</td></tr>
+                        <tr><td>CT36</td><td>JUGUETES EDUCATIVOS SANZ</td><td>ORENSE 89</td><td>MADRID</td><td>916872354</td><td>PEDRO IGLESIAS</td></tr>
+                        <tr><td>CT37</td><td>ALMACENES FERNANDEZ</td><td>ANTÓN 67</td><td>TERUEL</td><td>978564025</td><td>MARIA ARDANZA</td></tr>
+                        <tr><td>CT38</td><td>CONFECCIONES MÓNICA</td><td>MOTORES 67</td><td>BARCELONA</td><td>935681245</td><td>PEDRO SERRANO</td></tr>
+                        <tr><td>CT39</td><td>FERRETERÍA LIMA</td><td>VALLECAS 45</td><td>MADRID</td><td>913532785</td><td>LUIS GARCÍA</td></tr>
+                        <tr><td>CT40</td><td>DEPORTES EL BRASILEÑO</td><td>ABEL MARTÍNEZ 67</td><td>SALAMANCA</td><td>921548762</td><td>CARLOS GÓMEZ</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Tabla PRODUCTOS -->
+        <div id="productos" class="tabla-section">
+            <h2>PRODUCTOS</h2>
+            <div class="tabla-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>CÓDIGO ARTÍCULO</th>
+                            <th>SECCIÓN</th>
+                            <th>NOMBRE ARTÍCULO</th>
+                            <th>PRECIO</th>
+                            <th>FECHA</th>
+                            <th>PAÍS DE ORIGEN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>AR01</td><td>FERRETERÍA</td><td>DESTORNILLADOR</td><td>6,63</td><td>22/10/2000</td><td>ESPAÑA</td></tr>
+                        <tr><td>AR02</td><td>CONFECCIÓN</td><td>TRAJE CABALLERO</td><td>284,58</td><td>11/3/2002</td><td>ITALIA</td></tr>
+                        <tr><td>AR03</td><td>JUGUETERÍA</td><td>COCHE TELEDIRIGIDO</td><td>159,45</td><td>26/5/2002</td><td>MARRUECOS</td></tr>
+                        <tr><td>AR04</td><td>DEPORTES</td><td>RAQUETA TENIS</td><td>93,47</td><td>20/3/2000</td><td>USA</td></tr>
+                        <tr><td>AR06</td><td>DEPORTES</td><td>MANCUERNAS</td><td>60</td><td>13/9/2000</td><td>USA</td></tr>
+                        <tr><td>AR07</td><td>CONFECCIÓN</td><td>SERRUCHO</td><td>30,2</td><td>23/3/2001</td><td>FRANCIA</td></tr>
+                        <tr><td>AR08</td><td>JUGUETERÍA</td><td>CORREPASILLOS</td><td>103,34</td><td>11/4/2000</td><td>JAPÓN</td></tr>
+                        <tr><td>AR09</td><td>CONFECCIÓN</td><td>PANTALÓN SEÑORA</td><td>174,23</td><td>10/1/2000</td><td>MARRUECOS</td></tr>
+                        <tr><td>AR10</td><td>JUGUETERÍA</td><td>CONSOLA VIDEO</td><td>442,54</td><td>24/9/2002</td><td>USA</td></tr>
+                        <tr><td>AR11</td><td>CERÁMICA</td><td>TUBOS</td><td>168,43</td><td>4/2/2000</td><td>CHINA</td></tr>
+                        <tr><td>AR12</td><td>FERRETERÍA</td><td>LLAVE INGLESA</td><td>24,4</td><td>23/5/2001</td><td>USA</td></tr>
+                        <tr><td>AR13</td><td>CONFECCIÓN</td><td>CAMISA CABALLERO</td><td>67,13</td><td>11/8/2002</td><td>ESPAÑA</td></tr>
+                        <tr><td>AR14</td><td>JUGUETERÍA</td><td>TREN ELÉCTRICO</td><td>1 505,38</td><td>3/7/2001</td><td>JAPÓN</td></tr>
+                        <tr><td>AR15</td><td>CERÁMICA</td><td>PLATO DECORATIVO</td><td>54,09</td><td>7/6/2000</td><td>CHINA</td></tr>
+                        <tr><td>AR16</td><td>FERRETERÍA</td><td>ALICATES</td><td>6,74</td><td>17/4/2000</td><td>ITALIA</td></tr>
+                        <tr><td>AR17</td><td>JUGUETERÍA</td><td>MUÑECA ANDADORA</td><td>105,06</td><td>4/1/2001</td><td>ESPAÑA</td></tr>
+                        <tr><td>AR18</td><td>DEPORTES</td><td>PISTOLA OLÍMPICA</td><td>46,73</td><td>2/2/2001</td><td>SUECIA</td></tr>
+                        <tr><td>AR19</td><td>CONFECCIÓN</td><td>BLUSA SRA.</td><td>101,06</td><td>18/3/2000</td><td>CHINA</td></tr>
+                        <tr><td>AR20</td><td>CERÁMICA</td><td>JUEGO DE TE</td><td>43,27</td><td>15/1/2001</td><td>CHINA</td></tr>
+                        <tr><td>AR21</td><td>CERÁMICA</td><td>CENICERO</td><td>19,75</td><td>2/7/2001</td><td>JAPÓN</td></tr>
+                        <tr><td>AR22</td><td>FERRETERÍA</td><td>MARTILLO</td><td>11,4</td><td>4/9/2001</td><td>ESPAÑA</td></tr>
+                        <tr><td>AR23</td><td>CONFECCIÓN</td><td>CAZADORA PIEL</td><td>522,69</td><td>10/7/2001</td><td>ITALIA</td></tr>
+                        <tr><td>AR24</td><td>DEPORTES</td><td>BALÓN RUGBY</td><td>111,64</td><td>11/11/2000</td><td>USA</td></tr>
+                        <tr><td>AR25</td><td>DEPORTES</td><td>BALÓN BALONCESTO</td><td>75,27</td><td>25/6/2001</td><td>JAPÓN</td></tr>
+                        <tr><td>AR26</td><td>JUGUETERÍA</td><td>FUERTE DE SOLDADOS</td><td>143,7</td><td>25/11/2000</td><td>JAPÓN</td></tr>
+                        <tr><td>AR27</td><td>CONFECCIÓN</td><td>ABRIGO CABALLERO</td><td>500 000,00</td><td>5/4/2002</td><td>ITALIA</td></tr>
+                        <tr><td>AR28</td><td>DEPORTES</td><td>BALÓN FÚTBOL</td><td>43,91</td><td>4/7/2002</td><td>ESPAÑA</td></tr>
+                        <tr><td>AR29</td><td>CONFECCIÓN</td><td>ABRIGO SRA</td><td>360,07</td><td>3/5/2001</td><td>MARRUECOS</td></tr>
+                        <tr><td>AR30</td><td>FERRETERÍA</td><td>DESTORNILLADOR</td><td>9,06</td><td>20/2/2002</td><td>FRANCIA</td></tr>
+                        <tr><td>AR31</td><td>JUGUETERÍA</td><td>PISTOLA CON SONIDOS</td><td>57,25</td><td>15/4/2001</td><td>ESPAÑA</td></tr>
+                        <tr><td>AR32</td><td>DEPORTES</td><td>CRONÓMETRO</td><td>439,18</td><td>3/1/2002</td><td>USA</td></tr>
+                        <tr><td>AR33</td><td>CERÁMICA</td><td>MACETA</td><td>29,04</td><td>23/2/2000</td><td>ESPAÑA</td></tr>
+                        <tr><td>AR34</td><td>OFICINA</td><td>PIE DE LÁMPARA</td><td>39,76</td><td>27/5/2001</td><td>TURQUÍA</td></tr>
+                        <tr><td>AR35</td><td>FERRETERÍA</td><td>LIMA GRANDE</td><td>22,07</td><td>10/8/2002</td><td>ESPAÑA</td></tr>
+                        <tr><td>AR36</td><td>FERRETERÍA</td><td>JUEGO DE BROCAS</td><td>15,1</td><td>4/7/2002</td><td>TAIWÁN</td></tr>
+                        <tr><td>AR37</td><td>CONFECCIÓN</td><td>CINTURÓN DE PIEL</td><td>4,33</td><td>12/5/2002</td><td>ESPAÑA</td></tr>
+                        <tr><td>AR38</td><td>DEPORTES</td><td>CAÑA DE PESCA</td><td>270</td><td>14/2/2000</td><td>USA</td></tr>
+                        <tr><td>AR39</td><td>CERÁMICA</td><td>JARRA CHINA</td><td>127,77</td><td>2/9/2002</td><td>CHINA</td></tr>
+                        <tr><td>AR40</td><td>DEPORTES</td><td>BOTA ALPINISMO</td><td>144</td><td>5/5/2002</td><td>ESPAÑA</td></tr>
+                        <tr><td>AR41</td><td>DEPORTES</td><td>PALAS DE PING PONG</td><td>21,6</td><td>2/2/2002</td><td>ESPAÑA</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function mostrarTabla(id, btn) {
+            // Ocultar todas las secciones
+            document.querySelectorAll('.tabla-section').forEach(function(sec) {
+                sec.classList.remove('visible');
+            });
+            // Quitar clase activo de todos los botones
+            document.querySelectorAll('.btn').forEach(function(b) {
+                b.classList.remove('activo');
+            });
+            // Mostrar la sección seleccionada
+            document.getElementById(id).classList.add('visible');
+            // Marcar el botón como activo
+            btn.classList.add('activo');
+        }
+    </script>
+
+</body>
+</html>
+
